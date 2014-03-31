@@ -30,11 +30,11 @@ function fetchSubmodulePaths(callback) {
 
     var currentRepoPath = window.location.pathname.match(/\/[^\/]*\/[^\/]*\//)[0];
 
-    var gitModulesPath = 'https://github.com' + currentRepoPath + 'raw/' + guessAtCurrentCommitForGitConfig + '/.gitmodules'
+    var gitModulesPath = 'https://github.com' + currentRepoPath + 'blob/' + guessAtCurrentCommitForGitConfig + '/.gitmodules'
 
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
-        var submoduleRegex = /url.*=.*github.com:(.*)\.git/g;
+        var submoduleRegex = /url\s*=[^>]*github.com:([^<\s]*)\.git/g;
         var submodules = [];
         while ((submodule = submoduleRegex.exec(xhr.responseText)) !== null) {
             submodules.push(submodule[1]);
