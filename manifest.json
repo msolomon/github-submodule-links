@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "GitHub submodule links",
+  "version": "1.0",
+  "description": "Hyperlinks submodule hashes and submodule diffs on GitHub.",
+  "icons": {
+    "128": "icon.png"
+  },
+  "permissions": [
+    "https://github.com/",
+    "https://raw.githubusercontent.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/*"
+      ],
+      "js": [
+        "link_maker.js"
+      ]
+    }
+  ],
+  "author": "Mike Solomon"
+}
