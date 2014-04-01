@@ -1,3 +1,5 @@
+// This code is pretty hacky and very much tied to GitHub's current HTML.
+// Expect it to break when GitHub changes things around, or just at random.
 
 function rewriteSubmoduleHashesToLinks() {
     var containingElement = document.querySelectorAll("pre.diff-line-pre");
@@ -93,6 +95,5 @@ function insertDiffLinkIfValid(submoduleCommitPath, submoduleHash, nextSubmodule
     xhr.send();
 }
 
-///////////////////////////////////////////////////////////
 
 rewriteSubmoduleHashesToLinks();
