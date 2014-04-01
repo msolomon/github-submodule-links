@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Mike Solomon</string>
+	<key>Builder Version</key>
+	<string>9537.74.9</string>
+	<key>CFBundleDisplayName</key>
+	<string>GitHub submodule links</string>
+	<key>CFBundleIdentifier</key>
+	<string>io.msol.github-submodule-hyperlinker</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict/>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>link_maker.js</string>
+			</array>
+		</dict>
+		<key>Whitelist</key>
+		<array>
+			<string>http://github.com/*</string>
+			<string>htts://github.com/*</string>
+			<string>http://raw.githubusercontent.com/*</string>
+			<string>https://raw.githubusercontent.com/*</string>
+		</array>
+	</dict>
+	<key>Description</key>
+	<string>Hyperlinks submodule hashes and submodule diffs on GitHub.</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>github.com</string>
+				<string>raw.githubusercontent.com</string>
+			</array>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+	<key>Website</key>
+	<string>http://msol.io</string>
+</dict>
+</plist>
