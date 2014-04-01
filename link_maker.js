@@ -71,7 +71,7 @@ function getDiffLinkPlaceholderHTMLAndInsertIfExists(submoduleCommitPath, submod
     var placeholderHTML = "";
     for (var i = 0; i < submoduleHashes.length; i++) {
         if (submoduleHash == submoduleHashes[i]) continue;
-        placeholderHTML += '<span id="' + submoduleHash + '...' + submoduleHashes[i] + '"></span>';
+        placeholderHTML += '<span id="' + submoduleHash + '…' + submoduleHashes[i] + '"></span>';
         insertDiffLinkIfValid(submoduleCommitPath, submoduleHash, submoduleHashes[i]);
     }
 
@@ -80,12 +80,12 @@ function getDiffLinkPlaceholderHTMLAndInsertIfExists(submoduleCommitPath, submod
 
 function insertDiffLinkIfValid(submoduleCommitPath, submoduleHash, nextSubmoduleHash) {
     var diffURL = submoduleCommitPath.replace(/\/commit\//, '/compare/') + '...' + nextSubmoduleHash;
-    var shortDiff = submoduleHash.substring(0, 4) + '..' + nextSubmoduleHash.substring(0, 4);
+    var shortDiff = submoduleHash.substring(0, 4) + '…' + nextSubmoduleHash.substring(0, 4);
 
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
         if (xhr.status === 200) {
-            var placeholder = document.getElementById(submoduleHash + '...' + nextSubmoduleHash);
+            var placeholder = document.getElementById(submoduleHash + '…' + nextSubmoduleHash);
             placeholder.innerHTML = ' <a href="' + diffURL + '">' + shortDiff + '</a> ';
         }
     }
