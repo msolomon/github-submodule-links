@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "GitHub submodule links",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Hyperlinks submodule hashes and submodule diffs on GitHub.",
   "icons": {
     "128": "icon.png"
