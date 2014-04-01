@@ -31,8 +31,6 @@
 		<array>
 			<string>http://github.com/*</string>
 			<string>htts://github.com/*</string>
-			<string>http://raw.githubusercontent.com/*</string>
-			<string>https://raw.githubusercontent.com/*</string>
 		</array>
 	</dict>
 	<key>Description</key>
@@ -46,7 +44,6 @@
 			<key>Allowed Domains</key>
 			<array>
 				<string>github.com</string>
-				<string>raw.githubusercontent.com</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
