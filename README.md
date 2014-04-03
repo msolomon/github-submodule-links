@@ -1,4 +1,3 @@
-
 # GitHub submodule links
 
 Hyperlinks submodule hashes and submodule diffs on GitHub.
@@ -11,7 +10,7 @@ GitHub doesn't hyperlink to submodules in diffs. To make it easier to track what
 
 ### Safari
 
-[Download the Safari extension](https://github.com/msolomon/github-submodule-links/releases/download/v1.2/github-submodule-links.safariextz) and run it.
+[Download the Safari extension](https://github.com/msolomon/github-submodule-links/releases/download/v1.2.1/github-submodule-links.safariextz) and run it.
 
 ### Chrome
 
