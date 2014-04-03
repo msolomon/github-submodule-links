@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.2.1</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.2.1</string>
 	<key>Chrome</key>
 	<dict/>
 	<key>Content</key>
@@ -30,7 +30,7 @@
 		<key>Whitelist</key>
 		<array>
 			<string>http://github.com/*</string>
-			<string>htts://github.com/*</string>
+			<string>https://github.com/*</string>
 		</array>
 	</dict>
 	<key>Description</key>
@@ -51,6 +51,8 @@
 			<string>Some</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://raw.githubusercontent.com/msolomon/github-submodule-links/master/Info.plist</string>
 	<key>Website</key>
 	<string>http://msol.io</string>
 </dict>
