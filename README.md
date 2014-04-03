@@ -15,3 +15,6 @@ GitHub doesn't hyperlink to submodules in diffs. To make it easier to track what
 ### Chrome
 
 [Visit the Chrome web store](https://chrome.google.com/webstore/detail/github-submodule-links/ncoknneddcolmgfnmcbemhhaghjdlkkb) and install the extension.
+
+### Firefox
+[Get the Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/github-submodule-links/)
