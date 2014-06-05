@@ -36,10 +36,12 @@ function fetchSubmodulePaths(callback) {
 
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
-        var submoduleRegex = /url\s*=[^>]*github.com:([^<\s]*)\.git/g;
+        var submoduleRegexes = [/url\s*=[^>]*github.com:([^<\s]*)\.git/g, /url\s*=[^>]*git:\/\/github.com\/([^<\s]*).git/g];
         var submodules = [];
-        while ((submodule = submoduleRegex.exec(xhr.responseText)) !== null) {
-            submodules.push(submodule[1]);
+        for (var i = 0; i < submoduleRegexes.length; i++) {
+            while ((submodule = submoduleRegexes[i].exec(xhr.responseText)) !== null) {
+                submodules.push(submodule[1]);
+            }
         }
 
         callback(submodules);
