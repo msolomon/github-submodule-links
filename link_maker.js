@@ -98,4 +98,15 @@ function insertDiffLinkIfValid(submoduleCommitPath, submoduleHash, nextSubmodule
 }
 
 
+// Run on page load
 rewriteSubmoduleHashesToLinks();
+
+// Run every second in case the page was partially swapped in as GitHub loves to do
+// TODO: find an event that reliably fires on soft page loads (URL change maybe? can't find an event for that)
+var lastUrl = window.location.href;
+setInterval(function() {
+    if (window.location.href != lastUrl) {
+        lastUrl = window.location.href;
+        rewriteSubmoduleHashesToLinks();
+    }
+}, 1000)
