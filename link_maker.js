@@ -2,7 +2,7 @@
 // Expect it to break when GitHub changes things around, or just at random.
 
 function rewriteSubmoduleHashesToLinks() {
-    var containingElement = document.querySelectorAll("pre.diff-line-pre");
+    var containingElement = document.querySelectorAll("td.blob-code");
     var submoduleHashElements = [];
     var submoduleHashes = [];
 
@@ -36,7 +36,7 @@ function fetchSubmodulePaths(callback) {
 
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
-        var submoduleRegexes = [/url\s*=[^>]*github.com:([^<\s]*)\.git/g, /url\s*=[^>]*git:\/\/github.com\/([^<\s]*).git/g];
+        var submoduleRegexes = [/url\s*=[^>]*github.com:([^<\s]*)\.git/g, /url\s*=[^>]*git:\/\/github.com\/([^<\s]*).git/g, /url\s*=[^>]*https?:\/\/github.com\/([^<\s]*).git/g];
         var submodules = [];
         for (var i = 0; i < submoduleRegexes.length; i++) {
             while ((submodule = submoduleRegexes[i].exec(xhr.responseText)) !== null) {
