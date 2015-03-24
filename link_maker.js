@@ -1,9 +1,9 @@
 
 function addSubmoduleDiffLinks() {
-    var containingElement = document.querySelectorAll("div#diff div.file, div#files div.file");
-    var submoduleHashes = [];
+	var containingElement = document.querySelectorAll("div#diff div.file, div#files div.file");
+	var submoduleHashes = [];
 
-    for (var i = 0; i < containingElement.length; i++) {
+	for (var i = 0; i < containingElement.length; i++) {
 		var element = containingElement[i];
 		
 		var header = element.querySelectorAll("div.file-header");
@@ -27,14 +27,14 @@ function addSubmoduleDiffLinks() {
 			secondCommit = codeBlobs[1].innerHTML.replace(/<[^>]*>/g, '');
 		}
 	
-        var matchFirstCommit = firstCommit.match(/\Subproject commit ([a-f0-9]{40})/);
+		var matchFirstCommit = firstCommit.match(/\Subproject commit ([a-f0-9]{40})/);
 		var matchSecondCommit;
 		if (secondCommit) {
 			matchSecondCommit = secondCommit.match(/\Subproject commit ([a-f0-9]{40})/);
 		}
 	
-        if (!matchFirstCommit || (secondCommit && !matchSecondCommit)) {
-			// Blob was just subproject related
+		if (!matchFirstCommit || (secondCommit && !matchSecondCommit)) {
+			// Blob was not subproject related
 			continue;
 		}
 		
@@ -81,52 +81,14 @@ function addSubmoduleDiffLinks() {
 				console.log("Could not find submodule: " + filePath);
 			}
 		}.bind(undefined, filePath, firstCommit, secondCommit, fileActionsElm));
-		
-		/*
-		fetchSubmodulePaths(filePath, function(firstCommit, secondCommit, fileActionsElm) {
-			return function(submodulePath) {
-				if (submodulePath) {
-					console.log('submodulePath: ' + submodulePath);
-					var diffUrl = 'https://github.com/' + submodulePath + '/compare/' + firstCommit + '...' + secondCommit;
-					var firstCommitUrl = 'https://github.com/' + submodulePath + '/tree/' + firstCommit;
-					var secondCommitUrl = 'https://github.com/' + submodulePath + '/tree/' + secondCommit;
-					var diffMenu = fileActionsElm.querySelectorAll('div.submodule-diff');
-					var classes = 'class="btn btn-sm tooltipped tooltipped-n"';
-					
-					var html ='';
-					if (secondCommit) {
-						html += '<a href="'+diffUrl+'" '+classes+' aria-label="View the diff between the old and the new submodule commit">Diff '+firstCommit.substring(0, 4)+'...'+secondCommit.substring(0, 4)+'</a> ';
-					}
-					html += '<a href="'+firstCommitUrl+'" '+classes+' aria-label="View the submodule commit">'+firstCommit.substring(0, 4)+'</a> ';
-					if (secondCommit) {
-						html += '<a href="'+secondCommitUrl+'" '+classes+' aria-label="View the submodule commit">'+secondCommit.substring(0, 4)+'</a>';
-					}
-				
-					// Did we already add the menu?
-					if (diffMenu.length == 0) {
-						var div = document.createElement('div');
-						div.className = "submodule-diff";
-						div.innerHTML = html;
-						fileActionsElm.insertBefore( div, fileActionsElm.childNodes[0] );
-					} else {
-						diffMenu[0].innerHTML = html;
-					}
-				} else {
-					console.log("Could not find submodule.");
-				}
-			};
-		}(firstCommit, secondCommit, fileActionsElm));
-		*/
-    }
+	}
 }
 
 var gitmodulesBlob;
 function fetchSubmodulePaths(filePath, callback) {
-    var guessAtCurrentCommitForGitConfig = document.body.innerHTML.match(/commit\/([a-f0-9]{40})/)[1];
-
-    var currentRepoPath = window.location.pathname.match(/\/[^\/]*\/[^\/]*\//)[0];
-
-    var gitModulesPath = 'https://github.com' + currentRepoPath + 'blob/' + guessAtCurrentCommitForGitConfig + '/.gitmodules'
+	var guessAtCurrentCommitForGitConfig = document.body.innerHTML.match(/commit\/([a-f0-9]{40})/)[1];
+	var currentRepoPath = window.location.pathname.match(/\/[^\/]*\/[^\/]*\//)[0];
+	var gitModulesPath = 'https://github.com' + currentRepoPath + 'blob/' + guessAtCurrentCommitForGitConfig + '/.gitmodules'
 	
 	if (gitmodulesBlob) {
 		return findSubmodulePath(filePath, gitmodulesBlob, callback);
@@ -178,8 +140,8 @@ addSubmoduleDiffLinks();
 // TODO: find an event that reliably fires on soft page loads (URL change maybe? can't find an event for that)
 var lastUrl = window.location.href;
 setInterval(function() {
-    if (window.location.href != lastUrl) {
-        lastUrl = window.location.href;
+	if (window.location.href != lastUrl) {
+		lastUrl = window.location.href;
 		// If the URL changed because of an AJAX request, we need to wait some time for the request to complete.
 		setTimeout(function  () {
 			addSubmoduleDiffLinks();
