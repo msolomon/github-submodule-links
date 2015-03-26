@@ -1,4 +1,8 @@
 
+function log(message) {
+	//console.log(message);
+}
+
 function addSubmoduleDiffLinks() {
 	var containingElement = document.querySelectorAll("div#diff div.file, div#files div.file");
 	var submoduleHashes = [];
@@ -9,6 +13,7 @@ function addSubmoduleDiffLinks() {
 		var header = element.querySelectorAll("div.file-header");
 		if (header.length != 1) {
 			// Could not find file-header.
+			log("Could not find file-header.");
 			continue;
 		}
 		header = header[0];
@@ -18,6 +23,7 @@ function addSubmoduleDiffLinks() {
 	
 		if (codeBlobs.length < 1 || codeBlobs.length > 2) {
 			// Submodule blobs always contains one or two code blobs (add and/or remove).
+			log("Submodule blob didn't contains one or two code blobs.");
 			continue;
 		}
 	
@@ -35,6 +41,7 @@ function addSubmoduleDiffLinks() {
 	
 		if (!matchFirstCommit || (secondCommit && !matchSecondCommit)) {
 			// Blob was not subproject related
+			log("Blob was not subproject related");
 			continue;
 		}
 		
@@ -46,6 +53,7 @@ function addSubmoduleDiffLinks() {
 		var fileActionsElm = header.querySelectorAll("div.file-actions");
 		if (fileActionsElm.length != 1) {
 			// Header-actions was not found.
+			log("Header-actions was not found.");
 			continue;
 		}
 		
@@ -70,15 +78,15 @@ function addSubmoduleDiffLinks() {
 			
 				// Did we already add the menu?
 				if (diffMenu.length == 0) {
-					var div = document.createElement('div');
-					div.className = "submodule-diff";
-					div.innerHTML = html;
-					fileActionsElm.insertBefore( div, fileActionsElm.childNodes[0] );
+					var elm = document.createElement('span');
+					elm.className = "submodule-diff";
+					elm.innerHTML = html;
+					fileActionsElm.insertBefore( elm, fileActionsElm.childNodes[0] );
 				} else {
 					diffMenu[0].innerHTML = html;
 				}
 			} else {
-				console.log("Could not find submodule: " + filePath);
+				log("Could not find submodule: " + filePath);
 			}
 		}.bind(undefined, filePath, firstCommit, secondCommit, fileActionsElm));
 	}
@@ -97,7 +105,7 @@ function fetchSubmodulePaths(filePath, callback) {
 		xhr.onload = function() {
 			gitmodulesBlob = xhr.responseText.match(/<div class="blob-wrapper data type-text">(\s|.)*?<\/div>/);
 			if (!gitmodulesBlob) {
-				console.log("Could not find .gitmodules content.");
+				log("Could not find .gitmodules content.");
 				return callback();
 			}
 			// Remove HTML tags.
@@ -112,10 +120,11 @@ function fetchSubmodulePaths(filePath, callback) {
 
 function findSubmodulePath(filePath, gitmodulesBlob, callback) {
 	// Only look at the section related to the requested submodule
-	var submodulePart = gitmodulesBlob.match(new RegExp('\\[submodule[^\\]]+'+filePath+'[^\\]]*\][^\\[]*'));
+	log(gitmodulesBlob);
+	var submodulePart = gitmodulesBlob.match(new RegExp('\\[submodule[^\\[]+'+filePath+'[^\\[]*'));
 	
 	if (!submodulePart) {
-		console.log("Could not find correct submodule in .gitmodules.");
+		log("Could not find correct submodule in .gitmodules.");
 		return callback();
 	}
 	submodulePart = submodulePart[0];
@@ -129,7 +138,7 @@ function findSubmodulePath(filePath, gitmodulesBlob, callback) {
 			return callback(submodule[1]);
 		}
 	}
-	console.log("Could not find matching github submodule url in blob.");
+	log("Could not find matching github submodule url in blob.");
 	return callback();
 }
 
