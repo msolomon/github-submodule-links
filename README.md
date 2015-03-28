@@ -1,6 +1,8 @@
 # GitHub submodule links
 
-Hyperlinks submodule hashes and submodule diffs on GitHub.
+Adds links for submodule hashes and submodule diffs on GitHub.
+
+![screenshot](screenshot.png)
 
 ------------------------
 
