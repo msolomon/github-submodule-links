@@ -103,7 +103,7 @@ function fetchSubmodulePaths(filePath, callback) {
 	} else {
 		var xhr = new XMLHttpRequest();
 		xhr.onload = function() {
-			gitmodulesBlob = xhr.responseText.match(/<div class="blob-wrapper data type-text">(\s|.)*?<\/div>/);
+			gitmodulesBlob = xhr.responseText.match(/<div [^>]*class="blob-wrapper data type-text"[^>]*>(\s|.)*?<\/div>/);
 			if (!gitmodulesBlob) {
 				log("Could not find .gitmodules content.");
 				return callback();
